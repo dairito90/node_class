@@ -4,12 +4,6 @@ var lionTemplate = '<h3><%= name %></h3>' +
 '<small>age: <%= age %></small>' +
 '<small><%= gender %></small>';
 
-
-
-
-
-
-
 var lions = [];
 
 var makeTemplate = function (data) {
@@ -22,7 +16,7 @@ var makeTemplate = function (data) {
 }
 
 var updatedLionList = function(){
-    var lionData = lions[lions.lenght-1];
+    var lionData = lions[lions.length-1];
     makeTemplate(lionData);
 }
 
@@ -63,7 +57,7 @@ var getValues = function() {
         fetch('/lions', {
                 method: 'post',
                 headers: {
-                    'Accepts': 'application/json',
+                    'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
 
@@ -75,6 +69,7 @@ var getValues = function() {
             })
             .then(function(createdLion) {
                 lions.push(createdLion);
+                console.log(lions);
                 updatedLionList();
             })
         return false;
